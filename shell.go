@@ -610,3 +610,10 @@ func (s *Shell) SwarmConnect(ctx context.Context, addr ...string) error {
 		Exec(ctx, &conn)
 	return err
 }
+
+// RepoGC
+func (s *Shell) RepoGC() error {
+	return s.Request("repo/gc").
+		Option("recursive", true).
+		Exec(context.Background(), nil)
+}
